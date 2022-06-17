@@ -61,36 +61,6 @@ variable "helm_chart_version" {
   description = "GitHub Runner Controller Helm chart version."
 }
 
-variable "cert_manager_chart_name" {
-  type        = string
-  default     = "jetstack/cert-manager"
-  description = "CertManager Helm chart name."
-}
-
-variable "cert_manager_chart_release_name" {
-  type        = string
-  default     = "jetstack/cert-manager"
-  description = "CertManager Helm chart release name."
-}
-
-variable "cert_manager_chart_repo" {
-  type        = string
-  default     = "https://charts.jetstack.io"
-  description = "CertManager Helm repository name."
-}
-
-variable "cert_manager_chart_version" {
-  type        = string
-  default     = "v1.5.0"
-  description = "CertManager Helm chart version."
-}
-
-variable "cert_manager_namespace" {
-  type        = string
-  default     = "cert-manager"
-  description = "GitHub Runner Controller Helm chart namespace which the service will be created."
-}
-
 variable "github_app_app_id" {
   type        = string
   description = "The ID of your GitHub App. This can't be set at the same time as `github_token`"
