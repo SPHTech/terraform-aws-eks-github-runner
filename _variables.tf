@@ -57,8 +57,38 @@ variable "helm_chart_repo" {
 
 variable "helm_chart_version" {
   type        = string
-  default     = "0.12.2"
+  default     = "0.19.0"
   description = "GitHub Runner Controller Helm chart version."
+}
+
+variable "cert_manager_chart_name" {
+  type        = string
+  default     = "jetstack/cert-manager"
+  description = "CertManager Helm chart name."
+}
+
+variable "cert_manager_chart_release_name" {
+  type        = string
+  default     = "jetstack/cert-manager"
+  description = "CertManager Helm chart release name."
+}
+
+variable "cert_manager_chart_repo" {
+  type        = string
+  default     = "https://charts.jetstack.io"
+  description = "CertManager Helm repository name."
+}
+
+variable "cert_manager_chart_version" {
+  type        = string
+  default     = "v1.5.0"
+  description = "CertManager Helm chart version."
+}
+
+variable "cert_manager_namespace" {
+  type        = string
+  default     = "cert-manager"
+  description = "GitHub Runner Controller Helm chart namespace which the service will be created."
 }
 
 variable "github_app_app_id" {
@@ -84,9 +114,11 @@ variable "github_token" {
 
 variable "github_organizations" {
   type = list(object({
-    name     = string
-    replicas = number
-    label    = string
+    name        = string
+    replicas    = number
+    min_replica = number
+    max_replica = number
+    label       = string
   }))
   default = []
 }
@@ -95,6 +127,8 @@ variable "github_repositories" {
   type = list(object({
     name     = string
     replicas = number
+    min_replicas = number
+    max_replicas = number
     label    = string
   }))
   default = []
